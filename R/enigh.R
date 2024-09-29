@@ -11,7 +11,7 @@
 #' @examples
 #'
 #' # Descargar datos de hogares
-#' \dontrun{hogares14 = enigh_nuevaconstruccion(year = 2014,  datos = "hogares")}
+#' \dontrun{pob = enigh(year = 2022,  datos = "poblacion")}
 #' @return Data.frame
 #' @export
 #'

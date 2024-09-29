@@ -26,7 +26,10 @@ enoe = function(year = NA, trimestre = NA, integrar = FALSE){
   formato = "dbf"
 
   # Descargar
-  if (year >= 2020 & !(year == 2020 & trimestre == 'trim1')) {
+  if (year >= 2023) {
+    url.base = paste("https://www.inegi.org.mx/contenidos/programas/enoe/15ymas/microdatos/enoe",year,trimestre,paste0(formato,'.zip'))
+  }
+  else if (dplyr::between(year, 2020,2022) & !(year == 2020 & trimestre == 'trim1')) {
     url.base = paste("https://www.inegi.org.mx/contenidos/programas/enoe/15ymas/microdatos/enoe_n",year,trimestre,paste0(formato,".zip"), sep = "_")
   } else {
     url.base = paste0("http://www.inegi.org.mx/contenidos/programas/enoe/15ymas/microdatos/", year, trimestre,  "_", formato, ".zip")
