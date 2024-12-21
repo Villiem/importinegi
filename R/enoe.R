@@ -36,7 +36,7 @@ enoe = function(year = NA, trimestre = NA, integrar = FALSE){
   }
   utils::download.file(url.base, temp.enoe)
   utils::unzip(temp.enoe, exdir = zipdir)
-  list_dataraw = list.files(zipdir, pattern = paste0(formato,'$'), full.names = T)
+  list_dataraw = list.files(zipdir, pattern = paste0(formato,'$'), full.names = T, ignore.case = TRUE)
   list_names = basename(tools::file_path_sans_ext(list_dataraw))
   # Read all files in the folder
   output = lapply(list_dataraw, rio::import)
