@@ -17,11 +17,22 @@
 #'
 #'
 enigh <- function(year = NA, datos = '', formato = 'dbf', extdir = ''){
-  link.base = 'https://www.inegi.org.mx/contenidos/programas/enigh/nc/'
+  # Validar parámetros
+  valid_years <- c(2018, 2020, 2022)
+  if(is.na(year) || !year %in% valid_years) {
+    stop("El año debe ser ", paste(valid_years, collapse=", "))
+  }
+
+  if(datos == '') {
+    stop("El parámetro 'datos' es obligatorio")
+  }
 
   # Construcción del enlace
+  link.base = 'https://www.inegi.org.mx/contenidos/programas/enigh/nc/'
   link = paste0(link.base, year, '/microdatos/enigh', year, '_ns_', datos, '_', formato, '.zip')
   print(link)
+
+  # Descargar el archivo
   temp.enigh = base::tempfile()
   utils::download.file(link, temp.enigh)
 
@@ -33,9 +44,18 @@ enigh <- function(year = NA, datos = '', formato = 'dbf', extdir = ''){
   # Extraer el archivo y obtener las rutas extraídas
   unzipped_files = utils::unzip(temp.enigh, junkpaths = TRUE, exdir = extdir)
 
-  # Imprimir los archivos extraídos
-  data = rio::import(unzipped_files)
+  # Importar los datos
+  if(length(unzipped_files) == 0) {
+    stop("No se encontraron archivos en el ZIP")
+  } else if(length(unzipped_files) == 1) {
+    data = rio::import(unzipped_files[1])
+  } else {
+    # Si hay múltiples archivos, podemos usar el primero o hacer algo más sofisticado
+    # como buscar por nombre específico
+    message("Se encontraron múltiples archivos. Importando el primero...")
+    data = rio::import(unzipped_files[1])
+  }
 
+  # Retornar explícitamente
+  return(data)
 }
-
-
