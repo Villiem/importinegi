@@ -5,7 +5,7 @@
 #' La ENIGH provee informacion estadisticas sobre los ingresos y gastos de los hogares en cuanto a su monto, procedencia y distribucion. Adicionalmente, la ENIGH provee informacion sobre las caracteristicas socio-demograficas de los integrantes del hogar.
 #'
 #' @param year Año de levantamiento de la encuesta en formato numerico. Los años disponibles son 2018, 2020, 2022
-#' @param datos Base de datos a descargar "viviendas" "hogares" "concentrado" "erogaciones" "gastohogar" "gastotarjetas" "poblacion" "ingresos" "gastopersona" "trabajos" "agro" "noagro"
+#' @param datos Base de datos a descargar "viviendas" "hogares" "concentradohogar" "erogaciones" "gastohogar" "gastotarjetas" "poblacion" "ingresos" "gastopersona" "trabajos" "agro" "noagro"
 #' @param formato Formato del archivo, 'csv' 'dbf' 'sav' 'dta'
 #' @param extdir Si se descomprimirá en algún directorio externo
 #' @examples
@@ -20,7 +20,7 @@ enigh <- function(year = NA, datos = '', formato = 'dbf', extdir = ''){
   # Validar parámetros
   valid_years <- c(2018, 2020, 2022)
   if(is.na(year) || !year %in% valid_years) {
-    stop("El año debe ser ", paste(valid_years, collapse=", "))
+    stop("El year debe ser ", paste(valid_years, collapse=", "))
   }
 
   if(datos == '') {
