@@ -9,7 +9,7 @@ enigh(year = NA, datos = "", formato = "dbf", extdir = "")
 \arguments{
 \item{year}{Año de levantamiento de la encuesta en formato numerico. Los años disponibles son 2018, 2020, 2022}
 
-\item{datos}{Base de datos a descargar "viviendas" "hogares" "concentrado" "erogaciones" "gastohogar" "gastotarjetas" "poblacion" "ingresos" "gastopersona" "trabajos" "agro" "noagro"}
+\item{datos}{Base de datos a descargar "viviendas" "hogares" "concentradohogar" "erogaciones" "gastohogar" "gastotarjetas" "poblacion" "ingresos" "gastopersona" "trabajos" "agro" "noagro"}
 
 \item{formato}{Formato del archivo, 'csv' 'dbf' 'sav' 'dta'}
 
