@@ -18,7 +18,7 @@
 #'
 enigh <- function(year = NA, datos = '', formato = 'dbf', extdir = ''){
   # Validar parámetros
-  valid_years <- c(2018, 2020, 2022)
+  valid_years <- c(2018, 2020, 2022, 2024)
   if(is.na(year) || !year %in% valid_years) {
     stop("El year debe ser ", paste(valid_years, collapse=", "))
   }
